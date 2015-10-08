@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Bibliothèque</string>
+    <string name="button_create">Créer</string>
+    <string name="button_viewLibrary">Voir la liste des livres</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_create_book">Créer un livre</string>
+    <string name="creer">Créer</string>
+    <string name="chercher">Parcourir</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="author">Auteur</string>
+    <string name="title">Titre</string>
+    <string name="ISBN">ISBN</string>
+    <string name="image">Image</string>
+    <string name="edit_author">Entrez un auteur</string>
+    <string name="edit_title">Entrez un titre</string>
+    <string name="edit_ISBN">Entrez un ISBN</string>
+    <string name="title_activity_view_book">Consulter les livres</string>
+    <string name="confirm_creation">Le livre a été créé</string>
+    <string name="creation_book">Création du livre</string>
+    <string name="ok">O.K.</string>
+
+    <color name="white">#FFFFFF</color>
+    <color name="LightBlue">#B0E0E6</color>
+    <color name="Black">#000000</color>
+    <color name="main">#D0BDAC</color>
+    <string name="title_activity_filter_menu">FilterMenu</string>
+
+
+
+</resources>
