@@ -6,47 +6,52 @@
     tools:context="com.sarah_wissocq_adrien_agez.bibliotheque.activities.CreateBook">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
      <TextView
          android:text="@string/author"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          />
+                                                        <!-- Author Input -->
     <EditText
         android:id="@+id/author"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edit_author"
-        />
+        android:singleLine="true"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="@string/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+                                                        <!-- Title Input -->
         <EditText
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_title"/>
+            android:hint="@string/edit_title"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="@string/ISBN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+                                                        <!-- ISBN Input -->
         <EditText
             android:id="@+id/isbn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_ISBN"/>
+            android:hint="@string/edit_ISBN"
+            android:singleLine="true"/>
 
     </LinearLayout>
 
