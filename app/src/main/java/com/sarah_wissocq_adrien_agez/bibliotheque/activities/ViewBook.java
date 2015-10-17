@@ -5,16 +5,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
@@ -60,6 +57,9 @@ public class ViewBook extends Activity {
 
 
     @Override
+    /**
+     * Créer un menu permettant de modifier ou de supprimer
+     */
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         if (v.getId()==R.id.lvBook) {
@@ -69,6 +69,9 @@ public class ViewBook extends Activity {
     }
 
     @Override
+    /**
+     * Modifier / Supprimer
+     */
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         ListView listView = (ListView) findViewById(R.id.lvBook);
@@ -77,9 +80,10 @@ public class ViewBook extends Activity {
                 // edit stuff here
                 return true;
             case R.id.delete:
+                /** Récupère le livre est le supprime de la librairie */
                 BookLibrary.LIBRARY.removeBook((Book) listView.getAdapter().getItem(info.position));
 
-                /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
+                /** Affiche une boîte de dialogue pour confirmer que le livre a été supprimé */
                 AlertDialog.Builder alert=new AlertDialog.Builder(this);
                 alert.setTitle(R.string.suppression_book);
                 alert.setMessage(R.string.confirm_suppression);
@@ -93,7 +97,7 @@ public class ViewBook extends Activity {
 
 
     /**
-     * Vérifie que le lire a bien été créé et redémarre l'activité afin de pouvoir recréer un autre livre.
+     * Redémarre l'activité afin de ne plus voir le livre supprimé dans la liste.
      */
     private final class OkListener implements DialogInterface.OnClickListener {
         @Override
