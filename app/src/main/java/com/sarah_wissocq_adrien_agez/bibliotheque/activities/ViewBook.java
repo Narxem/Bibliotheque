@@ -5,11 +5,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -19,7 +22,7 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookAdapter;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookLibrary;
 
 
-public class ViewBook extends Activity {
+public class ViewBook extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,10 @@ public class ViewBook extends Activity {
         final ListView listView = (ListView) findViewById(R.id.lvBook);
         registerForContextMenu(listView);
         listView.setAdapter(adapter);
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        return inflater.inflate(R.layout.fragment_layout, container, false);
     }
 
     @Override
