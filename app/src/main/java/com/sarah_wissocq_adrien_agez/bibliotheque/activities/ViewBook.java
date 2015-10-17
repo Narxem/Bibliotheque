@@ -1,17 +1,20 @@
 package com.sarah_wissocq_adrien_agez.bibliotheque.activities;
 
 import android.app.Activity;
-import android.app.ListActivity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.util.SparseBooleanArray;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.SubMenu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
@@ -28,7 +31,8 @@ public class ViewBook extends Activity {
 
         /** Créer une liste de livres */
         BookAdapter adapter = new BookAdapter(this, BookLibrary.LIBRARY);
-        ListView listView = (ListView) findViewById(R.id.lvBook);
+        final ListView listView = (ListView) findViewById(R.id.lvBook);
+        registerForContextMenu(listView);
         listView.setAdapter(adapter);
     }
 
@@ -53,4 +57,53 @@ public class ViewBook extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.lvBook) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_list, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        ListView listView = (ListView) findViewById(R.id.lvBook);
+        switch(item.getItemId()) {
+            case R.id.edit:
+                // edit stuff here
+                return true;
+            case R.id.delete:
+                BookLibrary.LIBRARY.removeBook((Book) listView.getAdapter().getItem(info.position));
+
+                /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
+                AlertDialog.Builder alert=new AlertDialog.Builder(this);
+                alert.setTitle(R.string.suppression_book);
+                alert.setMessage(R.string.confirm_suppression);
+                alert.setPositiveButton(R.string.ok, new OkListener());
+                alert.show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+
+    /**
+     * Vérifie que le lire a bien été créé et redémarre l'activité afin de pouvoir recréer un autre livre.
+     */
+    private final class OkListener implements DialogInterface.OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            ViewBook.this.finish();
+            Intent intent = new Intent(ViewBook.this, ViewBook.class);
+            startActivity(intent);
+        }
+    }
 }
+
+
+

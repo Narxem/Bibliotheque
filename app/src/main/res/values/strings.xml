@@ -20,6 +20,10 @@
     <string name="confirm_creation">Le livre a été créé</string>
     <string name="creation_book">Création du livre</string>
     <string name="ok">O.K.</string>
+    <string name="menu_edit">Modifier</string>
+    <string name="menu_delete">Supprimer</string>
+    <string name="suppression_book">Suppression</string>
+    <string name="confirm_suppression">Le livre a été supprimé</string>
     <string name="title_activity_filter_menu">FilterMenu</string>
 
 
