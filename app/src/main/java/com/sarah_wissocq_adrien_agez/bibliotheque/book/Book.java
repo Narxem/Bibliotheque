@@ -7,54 +7,29 @@ import android.graphics.drawable.Drawable;
  */
 public class Book {
 
-    protected String author;
-    protected String title;
-    protected String isbn;
-    protected String img;
-    protected Drawable image;
+
+    private String title;
+    private String author;
+    private String ISBN;
+    private Drawable image;
+    private String details;
 
     public Book() {
         super();
     }
 
-    public Book(String author, String title, String isbn) {
-        this.author = author;
-        this.title = title;
-        this.isbn = isbn;
+    public Book(String title, String author, String ISBN, Drawable image, String details){
+        this.title=title;
+        this.author=author;
+        this.ISBN=ISBN;
+        this.image=image;
+        this.details=details;
     }
 
-    /**
-     * Create a book
-     * @param author author of the book
-     * @param title title of the book
-     * @param isbn isbn of the book
-     * @param img image of the book
-     */
-    public Book(String author, String title, String isbn, Drawable img) {
-        this(author, title, isbn);
-        this.image = img;
-    }
-
-    @Deprecated
-    public Book(String author, String title, String isbn, String img) { // TODO Vérifier création de l'image
-        this(author, title, isbn);
-        Drawable d = Drawable.createFromPath(img);
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public Book(String title, String author, String ISBN){
+        this.title=title;
+        this.author=author;
+        this.ISBN=ISBN;
     }
 
     public String getTitle() {
@@ -73,6 +48,14 @@ public class Book {
         this.author = author;
     }
 
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
     public Drawable getImage() {
         return image;
     }
@@ -80,4 +63,14 @@ public class Book {
     public void setImage(Drawable image) {
         this.image = image;
     }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+
 }

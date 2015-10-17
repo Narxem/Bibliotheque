@@ -1,5 +1,6 @@
 package com.sarah_wissocq_adrien_agez.bibliotheque.activities;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,32 +18,16 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookAdapter;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookLibrary;
 
-import java.lang.String;
-import java.util.ArrayList;
-import java.util.List;
 
-import static com.sarah_wissocq_adrien_agez.bibliotheque.activities.Main.LIBRARY;
-
-
-public class ViewBook extends ActionBarActivity {
-
-    public static final   ArrayList<Book> books = new ArrayList<Book>();
-
-    static {
-
-        String uri ="@drawable/lille1";
-        books.add(new Book("Tolkien", "Le seigneur des anneaux", "667",uri));
-        books.add(new Book("Cacahuète", "Cookie", "665",uri));
-        books.add(new Book("Jean Robert","42","666",uri));
-    }
-
+public class ViewBook extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_book);
 
-        BookAdapter adapter = new BookAdapter(this, LIBRARY.getBookList());
+        /** Créer une liste de livres */
+        BookAdapter adapter = new BookAdapter(this, BookLibrary.LIBRARY);
         ListView listView = (ListView) findViewById(R.id.lvBook);
         listView.setAdapter(adapter);
     }

@@ -1,5 +1,6 @@
 package com.sarah_wissocq_adrien_agez.bibliotheque.activities;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -22,17 +23,16 @@ import android.widget.ImageView;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
+import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookLibrary;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-import static com.sarah_wissocq_adrien_agez.bibliotheque.activities.Main.LIBRARY;
-
-public class CreateBook extends ActionBarActivity {
+public class CreateBook extends Activity {
 
     private static final int SELECT_PHOTO = 1;
     private Uri uri;
     private BitmapDrawable bm=new BitmapDrawable();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +48,14 @@ public class CreateBook extends ActionBarActivity {
     }
 
     @Override
+    /**
+     * Récupère l'image et la sauvegarde
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
+            /** Récupère l'uri */
             this.uri = data.getData();
             String[] projection = { MediaStore.Images.Media.DATA };
 
@@ -64,8 +67,11 @@ public class CreateBook extends ActionBarActivity {
             cursor.close();
 
             try {
+                /** Converti l'uri en bitmap */
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                /** Sauvegarde le bitmap */
                 bm= new BitmapDrawable(bitmap);
+                /** AfficheZ le bitmap */
                 ImageView imageView = (ImageView) findViewById(R.id.imageView);
                 imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
@@ -84,29 +90,45 @@ public class CreateBook extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Démarre une application pour rechercher une image
+     */
     public void chercherImage(View view){
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
     }
 
+    /**
+     * Créer le livre lorqu'on appuie sur le bouton.
+     * @param view
+     */
     public void createBooks(View view){
 
+        /** Récupère le nom de l'auteur */
         EditText editAuthor = (EditText) findViewById(R.id.author);
         String author= editAuthor.getText().toString();
 
+        /** Récupère le titre */
         EditText editTitle= (EditText) findViewById(R.id.title);
         String title = editTitle.getText().toString();
 
+        /** Récupère l'ISBN */
         EditText editIsbn = (EditText) findViewById(R.id.isbn);
         String isbn = editIsbn.getText().toString();
 
+        /** Récupère la description */
+        EditText editDetail = (EditText) findViewById(R.id.details);
+        String detail = editDetail.getText().toString();
+
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         /**  String image = imageView.getDrawable().toString();
-      String image=this.uri.getPath();*/
+         String image=this.uri.getPath();*/
 
-            LIBRARY.addBook(new Book(author, title, isbn, this.bm));
+        /** Ajoute le livre à la bibliothèque */
+        BookLibrary.LIBRARY.addBook(new Book(author, title, isbn, this.bm, detail));
 
+        /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
         alert.setTitle(R.string.creation_book);
         alert.setMessage(R.string.confirm_creation);
@@ -115,6 +137,9 @@ public class CreateBook extends ActionBarActivity {
     }
 
 
+    /**
+     * Vérifie que le lire a bien été créé et redémarre l'activité afin de pouvoir recréer un autre livre.
+     */
     private final class OkListener implements DialogInterface.OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int which) {

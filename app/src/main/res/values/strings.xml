@@ -11,18 +11,15 @@
     <string name="title">Titre</string>
     <string name="ISBN">ISBN</string>
     <string name="image">Image</string>
+    <string name="details">Description</string>
     <string name="edit_author">Entrez un auteur</string>
     <string name="edit_title">Entrez un titre</string>
     <string name="edit_ISBN">Entrez un ISBN</string>
+    <string name="edit_details">Entrez une decription</string>
     <string name="title_activity_view_book">Consulter les livres</string>
     <string name="confirm_creation">Le livre a été créé</string>
     <string name="creation_book">Création du livre</string>
     <string name="ok">O.K.</string>
-
-    <color name="white">#FFFFFF</color>
-    <color name="LightBlue">#B0E0E6</color>
-    <color name="Black">#000000</color>
-    <color name="main">#D0BDAC</color>
     <string name="title_activity_filter_menu">FilterMenu</string>
 
 

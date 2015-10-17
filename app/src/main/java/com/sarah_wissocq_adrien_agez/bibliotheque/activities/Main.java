@@ -19,13 +19,10 @@ import java.util.List;
 
 public class Main extends ActionBarActivity {
 
-    public static final BookLibrary LIBRARY = new BookLibrary();
-
     static {
-        String uri ="@drawable/lille1";
-        LIBRARY.addBook(new Book("Jean Robert", "42", "666",uri));
-        LIBRARY.addBook(new Book("Tolkien", "Le seigneur des anneaux", "667",uri));
-        LIBRARY.addBook(new Book("Cacahuète", "Cookie", "665",uri));
+        BookLibrary.LIBRARY.addBook(new Book("Jean Robert", "42", "666"));
+        BookLibrary.LIBRARY.addBook(new Book("Tolkien", "Le seigneur des anneaux", "667"));
+        BookLibrary.LIBRARY.addBook(new Book("Cacahuète", "Cookie", "665"));
     }
 
     @Override
