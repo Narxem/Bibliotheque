@@ -104,7 +104,7 @@ public class CreateBook extends Activity {
          String image=this.uri.getPath();*/
 
         /** Ajoute le livre à la bibliothèque */
-        BookLibrary.LIBRARY.addBook(new Book(author, title, isbn, this.bm, detail));
+        BookLibrary.LIBRARY.addBook(new Book(title, author, isbn, this.bm, detail));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
