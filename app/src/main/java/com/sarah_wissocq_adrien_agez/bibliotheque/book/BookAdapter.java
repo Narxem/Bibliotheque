@@ -1,15 +1,6 @@
 package com.sarah_wissocq_adrien_agez.bibliotheque.book;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Parcel;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +10,7 @@ import android.widget.TextView;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by wissocq on 29/09/15.
@@ -60,7 +48,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         auteurView.setText(book.getAuthor());
         titreView.setText(book.getTitle());
-        isbnView.setText(book.getISBN());
+        isbnView.setText(book.getIsbn()
+        );
 
         // Retourne view
         return convertView;

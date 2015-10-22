@@ -18,10 +18,10 @@
         </activity>
         <activity
             android:name=".activities.CreateBook"
-            android:label="@string/title_activity_create_book" >
+            android:label="@string/createBook" >
         </activity>
         <activity
-            android:name=".activities.ViewBook"
+            android:name=".activities.ViewBookList"
             android:label="@string/title_activity_view_book" >
         </activity>
         <activity

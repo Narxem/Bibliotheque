@@ -1,29 +1,36 @@
 <resources>
     <string name="app_name">Bibliothèque</string>
-    <string name="button_create">Créer</string>
-    <string name="button_viewLibrary">Voir la liste des livres</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_create_book">Créer un livre</string>
+
+    <string name="ok">O.K.</string>
+
+    <!-- Main activity -->
+    <string name="createBook">Créer un livre</string>
+    <string name="viewBookList">Voir la liste des livres</string>
+
+
     <string name="creer">Créer</string>
     <string name="chercher">Parcourir</string>
-    <string name="hello_world">Hello world!</string>
+
+    <!-- Book properties -->
     <string name="author">Auteur</string>
     <string name="title">Titre</string>
     <string name="ISBN">ISBN</string>
     <string name="image">Image</string>
     <string name="details">Description</string>
-    <string name="edit_author">Entrez un auteur</string>
-    <string name="edit_title">Entrez un titre</string>
-    <string name="edit_ISBN">Entrez un ISBN</string>
-    <string name="edit_details">Entrez une decription</string>
+
+
+    <string name="enterAuthor">Entrez un auteur</string>
+    <string name="enterTitle">Entrez un titre</string>
+    <string name="enterIsbn">Entrez un ISBN</string>
+    <string name="enterDetails">Entrez une decription</string>
+
+
     <string name="title_activity_view_book">Consulter les livres</string>
     <string name="confirm_creation">Le livre a été créé</string>
     <string name="creation_book">Création du livre</string>
-    <string name="ok">O.K.</string>
     <string name="menu_edit">Modifier</string>
-    <string name="menu_delete">Supprimer</string>
-    <string name="suppression_book">Suppression</string>
-    <string name="confirm_suppression">Le livre a été supprimé</string>
+    <string name="suppress">Supprimer</string>
+    <string name="BookSuppressed">Livre supprimé</string>
     <string name="title_activity_filter_menu">FilterMenu</string>
 
 

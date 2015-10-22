@@ -10,7 +10,7 @@ public class Book {
 
     private String title;
     private String author;
-    private String ISBN;
+    private String isbn;
     private Drawable image;
     private String details;
 
@@ -18,18 +18,18 @@ public class Book {
         super();
     }
 
-    public Book(String title, String author, String ISBN, Drawable image, String details){
-        this.title=title;
-        this.author=author;
-        this.ISBN=ISBN;
-        this.image=image;
-        this.details=details;
+    public Book(String title, String author, String isbn, Drawable image, String details){
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.image = image;
+        this.details = details;
     }
 
-    public Book(String title, String author, String ISBN){
+    public Book(String title, String author, String isbn){
         this.title=title;
         this.author=author;
-        this.ISBN=ISBN;
+        this.isbn=isbn;
     }
 
     public String getTitle() {
@@ -48,12 +48,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public Drawable getImage() {
