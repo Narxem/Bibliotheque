@@ -14,7 +14,7 @@
     <!-- Book properties -->
     <string name="author">Auteur</string>
     <string name="title">Titre</string>
-    <string name="ISBN">ISBN</string>
+    <string name="isbn">ISBN</string>
     <string name="image">Image</string>
     <string name="details">Description</string>
 
