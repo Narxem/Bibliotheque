@@ -17,18 +17,31 @@ import android.widget.ListView;
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookAdapter;
-import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookLibrary;
+import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_AUTHOR;
 
 public class ViewBookList extends FragmentActivity {
+
+    private List<Book> bookList;
+    private BookDAO bookDAO = new BookDAO(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_book_list);
-
+        bookDAO = new BookDAO(this);
+        try {
+            bookDAO.openWritable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         /** Créer une liste de livres */
-        BookAdapter adapter = new BookAdapter(this, BookLibrary.LIBRARY);
+        bookList = bookDAO.getAllBookList(BOOK_AUTHOR);
+        BookAdapter adapter = new BookAdapter(this, bookList);
         final ListView listView = (ListView) findViewById(R.id.lvBook);
         registerForContextMenu(listView);
         listView.setAdapter(adapter);
@@ -38,7 +51,11 @@ public class ViewBookList extends FragmentActivity {
         return inflater.inflate(R.layout.fragment_book_list, container, false);
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        bookDAO.close();
+    }
 
 
     @Override
@@ -66,7 +83,9 @@ public class ViewBookList extends FragmentActivity {
                 return true;
             case R.id.delete:
                 /** Récupère le livre est le supprime de la librairie */
-                BookLibrary.LIBRARY.removeBook((Book) listView.getAdapter().getItem(info.position));
+                Book bookToDelete = (Book) listView.getAdapter().getItem(info.position);
+                bookDAO.removeBook(bookToDelete);
+                bookList.remove(bookToDelete);
 
                 /** Affiche une boîte de dialogue pour confirmer que le livre a été supprimé */
                 AlertDialog.Builder alert=new AlertDialog.Builder(this);

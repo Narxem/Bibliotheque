@@ -10,14 +10,15 @@ import android.widget.TextView;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by wissocq on 29/09/15.
+ * @author Adrien Agez
+ * @author Sarah Wissocq
  */
 public class BookAdapter extends ArrayAdapter<Book> {
 
-    public BookAdapter(Context context, ArrayList<Book> library) {
+    public BookAdapter(Context context, List<Book> library) {
         super(context, 0, library);
     }
 

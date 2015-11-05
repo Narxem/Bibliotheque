@@ -16,9 +16,10 @@ import android.widget.ImageView;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
-import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookLibrary;
+import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class CreateBook extends Activity {
 
@@ -26,11 +27,24 @@ public class CreateBook extends Activity {
     private Uri uri;
     private BitmapDrawable bm=new BitmapDrawable();
 
+    private BookDAO bookDAO = new BookDAO(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            bookDAO.openWritable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_create_book);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bookDAO.close();
     }
 
 
@@ -79,7 +93,6 @@ public class CreateBook extends Activity {
 
     /**
      * Créer le livre lorqu'on appuie sur le bouton.
-     * @param view
      */
     public void createBooks(View view){
 
@@ -104,7 +117,7 @@ public class CreateBook extends Activity {
          String image=this.uri.getPath();*/
 
         /** Ajoute le livre à la bibliothèque */
-        BookLibrary.LIBRARY.addBook(new Book(title, author, isbn, this.bm, detail));
+        bookDAO.insert(new Book(title, author, isbn, this.bm, detail));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
