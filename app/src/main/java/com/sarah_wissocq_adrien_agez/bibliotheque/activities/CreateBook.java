@@ -129,7 +129,7 @@ public class CreateBook extends Activity {
 
 
     /**
-     * Vérifie que le lire a bien été créé et redémarre l'activité afin de pouvoir recréer un autre livre.
+     * Vérifie que le livre a bien été créé et redémarre l'activité afin de pouvoir recréer un autre livre.
      */
     private final class OkListener implements DialogInterface.OnClickListener {
         @Override

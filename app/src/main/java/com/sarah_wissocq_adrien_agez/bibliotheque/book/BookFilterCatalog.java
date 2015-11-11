@@ -25,7 +25,6 @@ public class BookFilterCatalog {
         return bookFilters.remove(bf);
     }
 
-
     public ArrayList<BookFilter> getBookFilters() {
         return bookFilters;
     }

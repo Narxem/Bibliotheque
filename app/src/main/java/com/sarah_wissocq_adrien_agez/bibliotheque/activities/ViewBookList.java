@@ -14,10 +14,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.sarah_wissocq_adrien_agez.bibliotheque.FilterMenu;
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookAdapter;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
+import com.sarah_wissocq_adrien_agez.bibliotheque.book.filter.AuthorFilter;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -32,6 +34,21 @@ public class ViewBookList extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String filtreauteur;
+        /** Récupération du filtre */
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                filtreauteur= null;
+            } else {
+                filtreauteur= extras.getString("AUTHOR_FILTER");
+            }
+        } else {
+            filtreauteur= (String) savedInstanceState.getSerializable("AUTHOR_FILTER");
+        }
+        /** Création du filtre auteur*/
+        AuthorFilter af = new AuthorFilter(filtreauteur);
+
         setContentView(R.layout.activity_view_book_list);
         bookDAO = new BookDAO(this);
         try {
@@ -41,6 +58,7 @@ public class ViewBookList extends FragmentActivity {
         }
         /** Créer une liste de livres */
         bookList = bookDAO.getAllBookList(BOOK_AUTHOR);
+        /** Utiliser le filtre pour filtrer... */
         BookAdapter adapter = new BookAdapter(this, bookList);
         final ListView listView = (ListView) findViewById(R.id.lvBook);
         registerForContextMenu(listView);
@@ -97,6 +115,11 @@ public class ViewBookList extends FragmentActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    public void addFilter(View view){
+        Intent intent = new Intent(this, FilterMenu.class);
+        startActivity(intent);
     }
 
 
