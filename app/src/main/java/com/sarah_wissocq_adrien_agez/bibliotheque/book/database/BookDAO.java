@@ -98,5 +98,17 @@ public class BookDAO {
         }
         return list;
     }
-
+    /**
+     * @param filteredBy must be BOOK_TITLE, BOOK_AUTHOR or null.
+     * @param filter the filter for the selected column
+     * @param sortedBy must be BOOK_TITLE, BOOK_AUTHOR, BOOK_ISBN or null. Sort all the book by the given parameter
+     */
+    public List<Book> getAllBookList(@Nullable String filteredBy, @Nullable String filter, @Nullable String sortedBy) {
+        Cursor cursor = database.query(BOOK_TABLE, null, filteredBy + "LIKE" + filter, null, null, null, sortedBy);
+        List<Book> list = new ArrayList<Book>(cursor.getCount());
+        while (cursor.moveToNext()) {
+            list.add(new Book(cursor.getString(NUM_BOOK_TITLE), cursor.getString(NUM_BOOK_AUTHOR), cursor.getString(NUM_BOOK_ISBN)));
+        }
+        return list;
+    }
 }

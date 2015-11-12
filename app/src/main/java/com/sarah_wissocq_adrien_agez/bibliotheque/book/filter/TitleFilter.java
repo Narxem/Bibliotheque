@@ -5,7 +5,7 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
 /**
  * Created by agez on 08/10/15.
  */
-public class TitleFilter implements BookFilter {
+public class TitleFilter extends BookFilter {
 
     private String title = "";
 

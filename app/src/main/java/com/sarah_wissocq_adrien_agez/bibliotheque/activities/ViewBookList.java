@@ -34,20 +34,7 @@ public class ViewBookList extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String filtreauteur;
-        /** Récupération du filtre */
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                filtreauteur= null;
-            } else {
-                filtreauteur= extras.getString("AUTHOR_FILTER");
-            }
-        } else {
-            filtreauteur= (String) savedInstanceState.getSerializable("AUTHOR_FILTER");
-        }
-        /** Création du filtre auteur*/
-        AuthorFilter af = new AuthorFilter(filtreauteur);
+
 
         setContentView(R.layout.activity_view_book_list);
         bookDAO = new BookDAO(this);
@@ -65,6 +52,21 @@ public class ViewBookList extends FragmentActivity {
         listView.setAdapter(adapter);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        String filtreauteur;
+        /** Récupération du filtre */
+        Bundle extras = getIntent().getExtras();
+        if(extras == null) {
+            filtreauteur= null;
+        } else {
+            filtreauteur= extras.getString("AUTHOR_FILTER");
+        }
+        /** Création du filtre auteur*/
+        AuthorFilter af = new AuthorFilter(filtreauteur);
+    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_book_list, container, false);
     }
