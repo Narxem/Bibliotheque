@@ -30,7 +30,7 @@ public class CreateBook extends Activity {
     private BookDAO bookDAO = new BookDAO(this);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         try {
             bookDAO.openWritable();
         } catch (SQLException e) {
@@ -55,6 +55,7 @@ public class CreateBook extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        /** Récupérer l'image dans la gallery */
         if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK && data != null && data.getData() != null) {
             /** Récupère l'uri */
             this.uri = data.getData();
@@ -79,6 +80,9 @@ public class CreateBook extends Activity {
                 e.printStackTrace();
             }
         }
+
+        /** Prendre une photo */
+
     }
 
 
@@ -91,6 +95,9 @@ public class CreateBook extends Activity {
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
     }
 
+    /**public void prendrePhoto(View view){
+    }
+*/
     /**
      * Créer le livre lorqu'on appuie sur le bouton.
      */

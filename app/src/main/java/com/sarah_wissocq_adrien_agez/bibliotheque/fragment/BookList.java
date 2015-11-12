@@ -17,4 +17,14 @@ public class BookList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_book_list, container);
     }
+
+   /** @Override
+    public void onClick(ListView l, View v,int position, long id) {
+        Intent intent = new Intent(this.getActivity(), ViewBookDetails.class);
+        Book book = (Book) l.getSelectedItem();
+        Bundle bundle = new Bundle();
+        intent.putExtra("Book", book);
+        startActivity(intent);
+
+    }*/
 }

@@ -19,7 +19,6 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.BookAdapter;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
-import com.sarah_wissocq_adrien_agez.bibliotheque.book.filter.AuthorFilter;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -47,26 +46,11 @@ public class ViewBookList extends FragmentActivity {
         bookList = bookDAO.getAllBookList(BOOK_AUTHOR);
         /** Utiliser le filtre pour filtrer... */
         BookAdapter adapter = new BookAdapter(this, bookList);
-        final ListView listView = (ListView) findViewById(R.id.lvBook);
+        final ListView listView = (ListView) findViewById(R.id.list);
         registerForContextMenu(listView);
         listView.setAdapter(adapter);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        String filtreauteur;
-        /** Récupération du filtre */
-        Bundle extras = getIntent().getExtras();
-        if(extras == null) {
-            filtreauteur= null;
-        } else {
-            filtreauteur= extras.getString("AUTHOR_FILTER");
-        }
-        /** Création du filtre auteur*/
-        AuthorFilter af = new AuthorFilter(filtreauteur);
-    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_book_list, container, false);
     }
@@ -84,7 +68,7 @@ public class ViewBookList extends FragmentActivity {
      */
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        if (v.getId()==R.id.lvBook) {
+        if (v.getId()==R.id.list) {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_list, menu);
         }
@@ -96,7 +80,7 @@ public class ViewBookList extends FragmentActivity {
      */
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        ListView listView = (ListView) findViewById(R.id.lvBook);
+        ListView listView = (ListView) findViewById(R.id.list);
         switch(item.getItemId()) {
             case R.id.edit:
                 // edit stuff here
@@ -119,6 +103,8 @@ public class ViewBookList extends FragmentActivity {
         }
     }
 
+
+
     public void addFilter(View view){
         Intent intent = new Intent(this, FilterMenu.class);
         startActivity(intent);
@@ -137,6 +123,3 @@ public class ViewBookList extends FragmentActivity {
         }
     }
 }
-
-
-

@@ -2,21 +2,31 @@ package com.sarah_wissocq_adrien_agez.bibliotheque.book;
 
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 /**
  * Created by wissocq on 24/09/15.
  */
-public class Book {
+public class Book implements Serializable {
 
 
     private String title;
     private String author;
     private String isbn;
-    private Drawable image;
+    private String series;
+    private int volume;
+    private String editor;
+    private int editionYear;
+    private int pages;
     private String details;
+    private Drawable image;
+
+
 
     public Book() {
         super();
     }
+
 
     public Book(String title, String author, String isbn, Drawable image, String details){
         this.title = title;
@@ -66,6 +76,14 @@ public class Book {
 
     public String getDetails() {
         return details;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
     }
 
     public void setDetails(String details) {
