@@ -63,7 +63,6 @@ public class CreateBook extends Activity {
 
             Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
             cursor.moveToFirst();
-
             int columnIndex = cursor.getColumnIndex(projection[0]);
             String picturePath = cursor.getString(columnIndex); // returns null
             cursor.close();
@@ -124,7 +123,8 @@ public class CreateBook extends Activity {
          String image=this.uri.getPath();*/
 
         /** Ajoute le livre à la bibliothèque */
-        bookDAO.insert(new Book(title, author, isbn, this.bm, detail));
+        // TODO compléter le Book
+        bookDAO.insert(new Book(title));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
