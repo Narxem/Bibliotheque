@@ -23,7 +23,7 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_AUTHOR;
+//import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_AUTHOR;
 
 public class ViewBookList extends FragmentActivity {
 
@@ -43,12 +43,12 @@ public class ViewBookList extends FragmentActivity {
             e.printStackTrace();
         }
         /** Créer une liste de livres */
-        bookList = bookDAO.getAllBookList(BOOK_AUTHOR);
+       // bookList = bookDAO.getAllBookList(BOOK_AUTHOR);
         /** Utiliser le filtre pour filtrer... */
-        BookAdapter adapter = new BookAdapter(this, bookList);
+        //BookAdapter adapter = new BookAdapter(this, bookList);
         final ListView listView = (ListView) findViewById(R.id.list);
         registerForContextMenu(listView);
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -88,7 +88,7 @@ public class ViewBookList extends FragmentActivity {
             case R.id.delete:
                 /** Récupère le livre est le supprime de la librairie */
                 Book bookToDelete = (Book) listView.getAdapter().getItem(info.position);
-                bookDAO.removeBook(bookToDelete);
+               // bookDAO.removeBook(bookToDelete);
                 bookList.remove(bookToDelete);
 
                 /** Affiche une boîte de dialogue pour confirmer que le livre a été supprimé */

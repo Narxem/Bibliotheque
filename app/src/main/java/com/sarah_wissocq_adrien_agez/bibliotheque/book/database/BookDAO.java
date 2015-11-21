@@ -39,9 +39,9 @@ public class BookDAO {
         return database;
     }
 
-    public long insert(Book book) {
+  /**  public long insert(Book book) {
         ContentValues value = new ContentValues();
 
-    }
+    }*/
 
 }

@@ -17,6 +17,7 @@
     <string name="isbn">ISBN</string>
     <string name="image">Image</string>
     <string name="details">Description</string>
+    <string name="summary">Résumé</string>
 
 
     <string name="enterAuthor">Entrez un auteur</string>

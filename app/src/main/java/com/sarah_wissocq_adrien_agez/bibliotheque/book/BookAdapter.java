@@ -45,9 +45,9 @@ public class BookAdapter extends ArrayAdapter<Book> {
          Bitmap bm = BitmapFactory.decodeFile(book.getImg());
          BitmapDrawable bitmapDrawable = new BitmapDrawable(bm);*/
 
-        imageView.setImageDrawable(book.getImage());
+       // imageView.setImageDrawable(book.getImage());
 
-        auteurView.setText(book.getAuthor());
+        auteurView.setText(book.getAuthors().get(0));
         titreView.setText(book.getTitle());
         isbnView.setText(book.getIsbn()
         );

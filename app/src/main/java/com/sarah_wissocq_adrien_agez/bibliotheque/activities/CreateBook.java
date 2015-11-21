@@ -124,7 +124,7 @@ public class CreateBook extends Activity {
 
         /** Ajoute le livre à la bibliothèque */
         // TODO compléter le Book
-        bookDAO.insert(new Book(title));
+        //bookDAO.insert(new Book(title));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);

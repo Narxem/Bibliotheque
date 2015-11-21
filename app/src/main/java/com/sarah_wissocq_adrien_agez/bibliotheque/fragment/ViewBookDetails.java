@@ -30,7 +30,7 @@ public class ViewBookDetails extends Fragment {
         title.setText(book.getTitle());
         author.setText(book.getTitle());
         isbn.setText(book.getIsbn());
-        details.setText(book.getDetails());
+        details.setText(book.getSummary());
 
         return inflater.inflate(R.layout.layout_book_details, container);
     }
