@@ -20,6 +20,8 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class CreateBook extends Activity {
 
@@ -104,7 +106,8 @@ public class CreateBook extends Activity {
 
         /** Récupère le nom de l'auteur */
         EditText editAuthor = (EditText) findViewById(R.id.author);
-        String author= editAuthor.getText().toString();
+        List<String> authors = new LinkedList();
+        authors.add(editAuthor.getText().toString());
 
         /** Récupère le titre */
         EditText editTitle= (EditText) findViewById(R.id.title);
@@ -123,8 +126,8 @@ public class CreateBook extends Activity {
          String image=this.uri.getPath();*/
 
         /** Ajoute le livre à la bibliothèque */
-        // TODO compléter le Book
-        //bookDAO.insert(new Book(title));
+
+        bookDAO.insert(new Book(title, authors));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);

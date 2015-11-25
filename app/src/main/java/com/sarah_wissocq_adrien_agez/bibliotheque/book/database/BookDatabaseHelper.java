@@ -78,7 +78,19 @@ public class BookDatabaseHelper extends SQLiteOpenHelper {
                     TAG_NAME + " TEXT NOT NULL);";
 
     // ############### TABLES INTERMEDIAIRRES ###############
+    public static final String TABLE_BOOK_AUTHOR = "bookAuthor";
+    public static final String BOOK_AUTHOR_BOOKID = "bookID";
+    public static final int COL_BOOK_AUTHOR_BOOKID = 0;
+    public static final String BOOK_AUTHOR_AUTHORID = "authorID";
+    public static final int COL_BOOK_AUTHOR_AUTHORID = 1;
     private static final String CREATE_BOOK_AUTHOR_TABLE = "CREATE TABLE BookAuthor (bookID INTEGER NOT NULL, authorID INTEGER NOT NULL);";
+
+
+    public static final String TABLE_BOOK_TAG = "bookTag";
+    public static final String BOOK_TAG_BOOKID = "bookID";
+    public static final int COL_BOOK_TAG_BOOKID = 0;
+    public static final String BOOK_TAG_TAGID = "tagID";
+    public static final int COL_BOOK_TAG_TAGID = 0;
     private static final String CREATE_BOOK_TAG_TABLE = "CREATE TABLE BookTag (bookID INTEGER NOT NULL, tagID INTEGER NOT NULL);";
 
 
