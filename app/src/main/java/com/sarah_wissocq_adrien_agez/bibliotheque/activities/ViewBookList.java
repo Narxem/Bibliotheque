@@ -43,12 +43,12 @@ public class ViewBookList extends FragmentActivity {
             e.printStackTrace();
         }
         /** Créer une liste de livres */
-       // bookList = bookDAO.getAllBookList(BOOK_AUTHOR);
+         bookList = bookDAO.getAllBooks();
         /** Utiliser le filtre pour filtrer... */
-        //BookAdapter adapter = new BookAdapter(this, bookList);
+        BookAdapter adapter = new BookAdapter(this, bookList);
         final ListView listView = (ListView) findViewById(R.id.list);
         registerForContextMenu(listView);
-        //listView.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

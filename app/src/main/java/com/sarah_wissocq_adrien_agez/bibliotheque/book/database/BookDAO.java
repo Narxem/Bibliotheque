@@ -8,30 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
 
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.AUTHOR_NAME;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_AUTHOR_AUTHORID;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_AUTHOR_BOOKID;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_COVER;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_EDITOR;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_ISBN;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_NUMSERIES;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_SERIES;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_SUMMARY;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_TITLE;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.BOOK_YEAR;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.COL_AUTHOR_ID;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.TABLE_AUTHORS;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.TABLE_BOOKS;
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.TABLE_BOOK_AUTHOR;
+import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.*;
 
 /**
  * @author Adrien Agez
  * @author Sarah Wissocq
  */
 public class BookDAO {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
 
     private BookDatabaseHelper databaseHelper;
     private SQLiteDatabase database;
@@ -76,7 +63,7 @@ public class BookDAO {
     protected void insertAuthors(long bookId, List<String> authors) {
         ContentValues authorValues = new ContentValues();
         for (String author : authors) {
-            Cursor cursor = database.query(TABLE_AUTHORS, null, AUTHOR_NAME + " = " + author, null, null, null, null, "1");
+            Cursor cursor = database.query(TABLE_AUTHORS, null, AUTHOR_NAME + " = '" + author + "'", null, null, null, null, "1");
             if (cursor.getCount() == 0) {
                 authorValues.put(AUTHOR_NAME, author);
                 long authorId = database.insert(TABLE_AUTHORS, null, authorValues);
@@ -92,4 +79,23 @@ public class BookDAO {
         }
     }
 
+
+    public List<Book> getAllBooks() {
+        List<Book> books = new LinkedList<>();
+        Cursor cursor = database.query(TABLE_BOOKS, null, null, null, null, null, null, null);
+        while (!cursor.isLast()) {
+            cursor.moveToNext();
+            long bookId = cursor.getLong(COL_BOOK_ID);
+            Cursor authorCursor = database.query(TABLE_BOOK_AUTHOR + " JOIN " + TABLE_AUTHORS + " ON " + BOOK_AUTHOR_AUTHORID + " = " + AUTHOR_ID, null,
+                    BOOK_AUTHOR_BOOKID + " = '" + bookId + "'", null, null, null, null, null);
+            List<String> authors = new LinkedList<String>();
+            while (!authorCursor.isLast()) {
+                authorCursor.moveToNext();
+                authors.add(authorCursor.getString(3));
+            }
+            books.add(new Book(cursor.getString(COL_BOOK_TITLE), cursor.getString(COL_BOOK_SERIES), cursor.getInt(COL_BOOK_NUMSERIES), cursor.getString(COL_BOOK_EDITOR),
+                    cursor.getInt(COL_BOOK_YEAR), cursor.getString(COL_BOOK_ISBN), cursor.getString(COL_BOOK_COVER), cursor.getString(COL_BOOK_SUMMARY), authors));
+        }
+        return  books;
+    }
 }

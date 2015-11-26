@@ -112,20 +112,47 @@ public class BookDatabaseHelper extends SQLiteOpenHelper {
         // TODO remove  test values
         values.put(BOOK_TITLE, "Hunger Games");
         values.put(BOOK_ISBN, "24");
-        db.insert(TABLE_BOOKS, null, values);
+        long bookID = db.insert(TABLE_BOOKS, null, values);
+        values.clear();
+        values.put(AUTHOR_NAME, "Suzanne Collins");
+        long authorID = db.insert(TABLE_AUTHORS, null, values);
+        values.clear();
+        values.put(BOOK_AUTHOR_BOOKID, bookID);
+        values.put(BOOK_AUTHOR_AUTHORID, authorID);
+        db.insert(TABLE_BOOK_AUTHOR, null, values);
 
+        values.clear();
         values.put(BOOK_TITLE, "Harry Potter");
         values.put(BOOK_ISBN, "7");
-        db.insert(TABLE_BOOKS,null, values);
+        bookID = db.insert(TABLE_BOOKS,null, values);
+        values.clear();
+        values.put(AUTHOR_NAME, "J.K.Rowling");
+        authorID = db.insert(TABLE_AUTHORS, null, values);
+        values.clear();
+        values.put(BOOK_AUTHOR_BOOKID, bookID);
+        values.put(BOOK_AUTHOR_AUTHORID, authorID);
+        db.insert(TABLE_BOOK_AUTHOR, null, values);
 
+        values.clear();
         values.put(BOOK_TITLE, "Le Seigneur des anneaux");
         values.put(BOOK_ISBN, "666");
-        db.insert(TABLE_BOOKS,null, values);
+        bookID = db.insert(TABLE_BOOKS,null, values);
+        values.clear();
+        values.put(AUTHOR_NAME, "Tolkien");
+        authorID = db.insert(TABLE_AUTHORS, null, values);
+        values.clear();
+        values.put(BOOK_AUTHOR_BOOKID, bookID);
+        values.put(BOOK_AUTHOR_AUTHORID, authorID);
+        db.insert(TABLE_BOOK_AUTHOR, null, values);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE *");
+        db.execSQL("DROP TABLE " + TABLE_BOOK_AUTHOR);
+        db.execSQL("DROP TABLE " + TABLE_BOOKS);
+        db.execSQL("DROP TABLE " + TABLE_AUTHORS);
+        db.execSQL("DROP TABLE " + TABLE_BOOK_TAG);
+        db.execSQL("DROP TABLE " + TABLE_TAGS);
         this.onCreate(db);
     }
 }
