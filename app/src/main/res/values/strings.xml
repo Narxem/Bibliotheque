@@ -18,12 +18,19 @@
     <string name="image">Image</string>
     <string name="details">Description</string>
     <string name="summary">Résumé</string>
-
+    <string name="editor">Editeir</string>
+    <string name="serie">Série</string>
+    <string name="numSerie">N°série</string>
+    <string name="year">Année</string>
 
     <string name="enterAuthor">Entrez un auteur</string>
     <string name="enterTitle">Entrez un titre</string>
     <string name="enterIsbn">Entrez un ISBN</string>
     <string name="enterDetails">Entrez une decription</string>
+    <string name="enterEditor">Entrez un editeur</string>
+    <string name="enterSerie">Entrez une série</string>
+    <string name="enterNumSerie">Entrez le numéro dans la série</string>
+    <string name="enterYear">Entrez une année</string>
 
 
     <string name="title_activity_view_book">Consulter les livres</string>

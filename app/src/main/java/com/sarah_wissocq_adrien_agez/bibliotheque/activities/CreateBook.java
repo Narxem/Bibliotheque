@@ -113,6 +113,22 @@ public class CreateBook extends Activity {
         EditText editTitle= (EditText) findViewById(R.id.title);
         String title = editTitle.getText().toString();
 
+        /** Récupère l'éditeur */
+        EditText editEditor= (EditText) findViewById(R.id.editor);
+        String editor = editEditor.getText().toString();
+
+        /** Récupère la série */
+        EditText editSerie= (EditText) findViewById(R.id.serie);
+        String serie = editSerie.getText().toString();
+
+        /** Récupère le numéro dans la série */
+        EditText editNumSerie = (EditText) findViewById(R.id.numSerie);
+        int numSerie = Integer.parseInt(editNumSerie.getText().toString());
+
+        /** Récupère l'année */
+        EditText editYear= (EditText) findViewById(R.id.year);
+        int year = Integer.parseInt(editYear.getText().toString());
+
         /** Récupère l'ISBN */
         EditText editIsbn = (EditText) findViewById(R.id.isbn);
         String isbn = editIsbn.getText().toString();
@@ -122,12 +138,13 @@ public class CreateBook extends Activity {
         String detail = editDetail.getText().toString();
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        /**  String image = imageView.getDrawable().toString();
-         String image=this.uri.getPath();*/
+        String image = imageView.getDrawable().toString();
+
+        /**String image=this.uri.getPath();*/
 
         /** Ajoute le livre à la bibliothèque */
 
-        bookDAO.insert(new Book(title, authors, isbn));
+        bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, image, detail, authors));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
