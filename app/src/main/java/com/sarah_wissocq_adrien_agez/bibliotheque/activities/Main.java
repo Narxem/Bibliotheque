@@ -23,6 +23,11 @@ public class Main extends Activity {
         startActivity(intent);
     }
 
+    public void scanner(View view){
+        Intent intent = new Intent(this, ScanBook.class);
+        startActivity(intent);
+    }
+
     public void view(View view){
         Intent intent = new Intent(this, ViewBookList.class);
         startActivity(intent);

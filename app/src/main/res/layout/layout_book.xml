@@ -10,33 +10,32 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         />
-
-    <TextView
-        android:textSize="15dp"
-        android:id="@+id/author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/image"
-        android:layout_alignTop="@+id/image"
-        android:layout_marginLeft="10dp"
-        android:text="@string/author" />
     <TextView
         android:textSize="15dp"
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/image"
-        android:layout_below="@+id/author"
+        android:layout_alignTop="@+id/image"
         android:layout_marginLeft="10dp"
         android:text="@string/title" />
     <TextView
         android:textSize="15dp"
-        android:id="@+id/isbn"
+        android:id="@+id/author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/image"
         android:layout_below="@+id/title"
         android:layout_marginLeft="10dp"
-        android:text="@string/isbn" />
+        android:text="@string/author" />
+    <TextView
+        android:textSize="15dp"
+        android:id="@+id/editor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image"
+        android:layout_below="@+id/author"
+        android:layout_marginLeft="10dp"
+        android:text="@string/editor" />
 
 </RelativeLayout>

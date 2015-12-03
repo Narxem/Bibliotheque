@@ -34,7 +34,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.image);
         TextView auteurView = (TextView) convertView.findViewById(R.id.author);
         TextView titreView = (TextView) convertView.findViewById(R.id.title);
-        TextView isbnView = (TextView) convertView.findViewById(R.id.isbn);
+        TextView editorView = (TextView) convertView.findViewById(R.id.editor);
 
         /** Drawable img= Drawable.createFromPath(book.getImg());
          image.setImageDrawable(img);
@@ -49,7 +49,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         auteurView.setText(book.getAuthors().get(0));
         titreView.setText(book.getTitle());
-        isbnView.setText(book.getIsbn()
+        editorView.setText(book.getEditor()
         );
 
         // Retourne view

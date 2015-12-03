@@ -6,19 +6,20 @@
     <!-- Main activity -->
     <string name="createBook">Créer un livre</string>
     <string name="viewBookList">Voir la liste des livres</string>
+    <string name="scanBook">Scanner un livre</string>
 
 
     <string name="creer">Créer</string>
     <string name="chercher">Parcourir</string>
 
     <!-- Book properties -->
-    <string name="author">Auteur</string>
     <string name="title">Titre</string>
+    <string name="author">Auteur</string>
     <string name="isbn">ISBN</string>
     <string name="image">Image</string>
     <string name="details">Description</string>
     <string name="summary">Résumé</string>
-    <string name="editor">Editeir</string>
+    <string name="editor">Editeur</string>
     <string name="serie">Série</string>
     <string name="numSerie">N°série</string>
     <string name="year">Année</string>
@@ -43,4 +44,8 @@
 
 
     <string name="filtrer">Filtrer par</string>
+    <string name="title_activity_scan_book">ScanBook</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

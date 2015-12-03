@@ -8,25 +8,6 @@
     android:background="@color/main"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Author Input -->
-        <EditText
-            android:id="@+id/author"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterAuthor"
-            android:singleLine="true"/>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,6 +27,26 @@
             android:layout_height="wrap_content"
             android:hint="@string/enterTitle"
             android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="20dp"
+            android:text="@string/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            />
+        <!-- Author Input -->
+        <EditText
+            android:id="@+id/author"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enterAuthor"
+            android:singleLine="true"/>
     </LinearLayout>
 
     <LinearLayout

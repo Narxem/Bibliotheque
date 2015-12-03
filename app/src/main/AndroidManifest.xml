@@ -28,6 +28,10 @@
             android:name=".FilterMenu"
             android:label="@string/title_activity_filter_menu" >
         </activity>
+        <activity
+            android:name=".activities.ScanBook"
+            android:label="@string/title_activity_scan_book" >
+        </activity>
     </application>
 
 </manifest>
