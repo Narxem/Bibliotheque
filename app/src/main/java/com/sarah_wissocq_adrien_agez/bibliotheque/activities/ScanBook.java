@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,7 +37,7 @@ public class ScanBook extends Activity {
 
         private static final int SCAN_BOOK = 1;
     private BookDAO bookDAO = new BookDAO(this);
-    private static final String OURKEY ="";
+    private static final String OURKEY ="AIzaSyC288QGqDhvI56ljFezhgMZbgZ1xjP8QrI";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         try {
@@ -60,7 +61,7 @@ public class ScanBook extends Activity {
 
     @Override
     /**
-     * Récupère l'image et la sauvegarde
+     *
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -71,11 +72,16 @@ public class ScanBook extends Activity {
             String scanFormat = scanningResult.getFormatName();
             Log.v("SCAN", "content :" + scanContent + " - format: " + scanFormat);
             if (scanContent != null && scanFormat != null && scanFormat.equalsIgnoreCase("EAN_13")) {
-                String bookSearchString = "https://googleapis.com/books/v1/volumes?" + "q=isbn:" + scanContent + "&key=" + OURKEY;
+                String bookSearchString = "https://www.googleapis.com/books/v1/volumes?" + "q=isbn:" + scanContent + "&key=" + OURKEY;
                 Book b= doGoogleBookRequest(bookSearchString);
-
+                if(b.getTitle()==null){
+                    System.out.println("Erreur result");
+                }
+                else {
+                    System.out.println(b.getTitle() + " RESULT");
+                }
                 EditText editTitle= (EditText) findViewById(R.id.title);
-                editTitle.setText(b.getTitle());
+                editTitle.setText(b.getTitle(), TextView.BufferType.EDITABLE);
             }
         }
     }
@@ -87,7 +93,14 @@ public class ScanBook extends Activity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String reponse) {
-                parseJsonResult(reponse, book);
+                System.out.println("OnResponse");
+                         parseJsonResult(reponse, book);
+                if(book.getTitle()==null){
+                    System.out.println("Erreur dans le response");
+                }
+                else {
+                    System.out.println(book.getTitle() + " : RESPONSE");
+                }
             }
 
         }, new Response.ErrorListener() {
@@ -96,6 +109,13 @@ public class ScanBook extends Activity {
             }
         });
         queue.add(stringRequest);
+        while (!stringRequest.hasHadResponseDelivered()) {}
+        if(book.getTitle()==null){
+            System.out.println("Erreur dans la matrice");
+        }
+        else {
+            System.out.println(book.getTitle());
+        }
         return book;
     }
 
@@ -107,8 +127,6 @@ public class ScanBook extends Activity {
                 JSONObject volume = items.getJSONObject(0);
                 JSONObject volumeInfo = volume.getJSONObject("volumeInfo");
                 book.setTitle(volumeInfo.getString("title"));
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -191,7 +209,7 @@ public class ScanBook extends Activity {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             ScanBook.this.finish();
-            Intent intent = new Intent(ScanBook.this, CreateBook.class);
+            Intent intent = new Intent(ScanBook.this, ScanBook.class);
             startActivity(intent);
         }
     }
