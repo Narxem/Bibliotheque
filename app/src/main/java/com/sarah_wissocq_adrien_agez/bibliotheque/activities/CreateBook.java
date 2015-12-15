@@ -20,6 +20,7 @@ import com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -106,8 +107,8 @@ public class CreateBook extends Activity {
 
         /** Récupère le nom de l'auteur */
         EditText editAuthor = (EditText) findViewById(R.id.author);
-        List<String> authors = new LinkedList();
-        authors.add(editAuthor.getText().toString());
+        List<String> authors = Arrays.asList(editAuthor.getText().toString().split("\\s*;\\s*"));
+        System.out.println(authors);
 
         /** Récupère le titre */
         EditText editTitle= (EditText) findViewById(R.id.title);
@@ -123,11 +124,22 @@ public class CreateBook extends Activity {
 
         /** Récupère le numéro dans la série */
         EditText editNumSerie = (EditText) findViewById(R.id.numSerie);
-        int numSerie = Integer.parseInt(editNumSerie.getText().toString());
+        int numSerie;
+        try {
+            numSerie = Integer.parseInt(editNumSerie.getText().toString());
+        } catch (NumberFormatException e) {
+            numSerie = -1;
+        }
+
 
         /** Récupère l'année */
         EditText editYear= (EditText) findViewById(R.id.year);
-        int year = Integer.parseInt(editYear.getText().toString());
+        int year;
+        try {
+            year = Integer.parseInt(editYear.getText().toString());
+        } catch (NumberFormatException e) {
+            year = -1;
+        }
 
         /** Récupère l'ISBN */
         EditText editIsbn = (EditText) findViewById(R.id.isbn);
@@ -138,7 +150,7 @@ public class CreateBook extends Activity {
         String detail = editDetail.getText().toString();
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        String image = imageView.getDrawable().toString();
+        String image =null; // imageView.getDrawable().toString();
 
         /**String image=this.uri.getPath();*/
 

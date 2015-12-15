@@ -120,6 +120,7 @@ public class BookDatabaseHelper extends SQLiteOpenHelper {
         values.put(BOOK_AUTHOR_BOOKID, bookID);
         values.put(BOOK_AUTHOR_AUTHORID, authorID);
         db.insert(TABLE_BOOK_AUTHOR, null, values);
+        db.insert(TABLE_BOOK_AUTHOR, null, values);
 
         values.clear();
         values.put(BOOK_TITLE, "Harry Potter");

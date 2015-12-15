@@ -18,7 +18,7 @@ import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatab
  * @author Sarah Wissocq
  */
 public class BookDAO {
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 11;
 
     private BookDatabaseHelper databaseHelper;
     private SQLiteDatabase database;
@@ -63,15 +63,17 @@ public class BookDAO {
     protected void insertAuthors(long bookId, List<String> authors) {
         ContentValues authorValues = new ContentValues();
         for (String author : authors) {
+            authorValues.clear();
             Cursor cursor = database.query(TABLE_AUTHORS, null, AUTHOR_NAME + " = '" + author + "'", null, null, null, null, "1");
-            if (cursor.getCount() == 0) {
+            if (cursor.getCount() == 0) {  // Auteur pas encore présent
                 authorValues.put(AUTHOR_NAME, author);
                 long authorId = database.insert(TABLE_AUTHORS, null, authorValues);
                 authorValues.clear();
                 authorValues.put(BOOK_AUTHOR_BOOKID, bookId);
                 authorValues.put(BOOK_AUTHOR_AUTHORID, authorId);
                 database.insert(TABLE_BOOK_AUTHOR, null, authorValues);
-            } else {
+            } else {    // Auteur déjà présent
+                cursor.moveToNext();
                 authorValues.put(BOOK_AUTHOR_BOOKID, bookId);
                 authorValues.put(BOOK_AUTHOR_AUTHORID, cursor.getLong(COL_AUTHOR_ID));
                 database.insert(TABLE_BOOK_AUTHOR, null, authorValues);
@@ -97,5 +99,13 @@ public class BookDAO {
                     cursor.getInt(COL_BOOK_YEAR), cursor.getString(COL_BOOK_ISBN), cursor.getString(COL_BOOK_COVER), cursor.getString(COL_BOOK_SUMMARY), authors));
         }
         return  books;
+    }
+
+    public void deleteBook(Book book) {
+        String title = book.getTitle();
+        List<String> author = book.getAuthors();
+        database.delete(TABLE_BOOKS
+                , BOOK_TITLE +"='"+ title+"'"
+                , null);
     }
 }

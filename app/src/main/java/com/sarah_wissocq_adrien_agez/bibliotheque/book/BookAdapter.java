@@ -47,7 +47,10 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
        // imageView.setImageDrawable(book.getImage());
 
-        auteurView.setText(book.getAuthors().get(0));
+
+        String authors  = book.getAuthors().toString();
+
+        auteurView.setText(authors.substring(1, authors.length() - 1));
         titreView.setText(book.getTitle());
         editorView.setText(book.getEditor()
         );

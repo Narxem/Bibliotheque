@@ -88,7 +88,7 @@ public class ViewBookList extends FragmentActivity {
             case R.id.delete:
                 /** Récupère le livre est le supprime de la librairie */
                 Book bookToDelete = (Book) listView.getAdapter().getItem(info.position);
-               // bookDAO.removeBook(bookToDelete);
+                bookDAO.deleteBook(bookToDelete);
                 bookList.remove(bookToDelete);
 
                 /** Affiche une boîte de dialogue pour confirmer que le livre a été supprimé */
