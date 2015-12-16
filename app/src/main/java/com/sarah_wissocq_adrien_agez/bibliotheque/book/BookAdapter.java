@@ -1,6 +1,13 @@
 package com.sarah_wissocq_adrien_agez.bibliotheque.book;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +17,8 @@ import android.widget.TextView;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -36,17 +45,16 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView titreView = (TextView) convertView.findViewById(R.id.title);
         TextView editorView = (TextView) convertView.findViewById(R.id.editor);
 
-        /** Drawable img= Drawable.createFromPath(book.getImg());
+       /** Drawable img= Drawable.createFromPath(book.getCoverURI());
          image.setImageDrawable(img);
-         String imgpath = book.getImg();
+
+         String imgpath = book.getCoverURI();
          BitmapDrawable bm = new BitmapDrawable(imgpath);
-         image.setImageBitmap(bm);
+        image.setImageDrawable(bm);
 
-         Bitmap bm = BitmapFactory.decodeFile(book.getImg());
-         BitmapDrawable bitmapDrawable = new BitmapDrawable(bm);*/
-
-       // imageView.setImageDrawable(book.getImage());
-
+        Bitmap bm = BitmapFactory.decodeFile(book.getCoverURI());
+       BitmapDrawable bitmapDrawable = new BitmapDrawable(bm);
+       imageView.setImageBitmap(bm);*/
 
         String authors  = book.getAuthors().toString();
 

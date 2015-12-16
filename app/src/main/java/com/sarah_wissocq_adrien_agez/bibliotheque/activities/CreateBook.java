@@ -231,9 +231,9 @@ public class CreateBook extends Activity {
         String detail = editDetail.getText().toString();
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        String image =null; // imageView.getDrawable().toString();
-
-        /**String image=this.uri.getPath();*/
+       // String image =imageView.getDrawable().toString();
+       // String image = uri.toString();
+        String image=this.uri.getPath();
 
         /** Ajoute le livre à la bibliothèque */
 

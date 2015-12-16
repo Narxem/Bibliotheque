@@ -3,6 +3,7 @@ package com.sarah_wissocq_adrien_agez.bibliotheque.book.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.sarah_wissocq_adrien_agez.bibliotheque.book.Book;
@@ -18,7 +19,7 @@ import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatab
  * @author Sarah Wissocq
  */
 public class BookDAO {
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 12;
 
     private BookDatabaseHelper databaseHelper;
     private SQLiteDatabase database;
@@ -102,7 +103,7 @@ public class BookDAO {
     }
 
     public void deleteBook(Book book) {
-        String title = book.getTitle();
+        String title = book.getTitle().replaceAll("'", "''");
         List<String> author = book.getAuthors();
         database.delete(TABLE_BOOKS
                 , BOOK_TITLE +"='"+ title+"'"
