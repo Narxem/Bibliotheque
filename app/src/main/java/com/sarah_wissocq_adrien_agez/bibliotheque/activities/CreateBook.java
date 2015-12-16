@@ -44,7 +44,7 @@ public class CreateBook extends Activity {
     private Uri uri;
     private BitmapDrawable bm=new BitmapDrawable();
     private BookDAO bookDAO = new BookDAO(this);
-    private static final String OURKEY ="Impero";
+    private static final String OURKEY ="AIzaSyC288QGqDhvI56ljFezhgMZbgZ1xjP8QrI";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -233,11 +233,11 @@ public class CreateBook extends Activity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
        // String image =imageView.getDrawable().toString();
        // String image = uri.toString();
-        String image=this.uri.getPath();
+       // String image=this.uri.getPath();
 
         /** Ajoute le livre à la bibliothèque */
 
-        bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, image, detail, authors));
+        bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, "", detail, authors));
 
         /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
         AlertDialog.Builder alert=new AlertDialog.Builder(this);

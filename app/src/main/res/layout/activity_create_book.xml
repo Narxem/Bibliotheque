@@ -1,215 +1,222 @@
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.sarah_wissocq_adrien_agez.bibliotheque.activities.CreateBook"
-    android:layout_height="1000dp"
     android:layout_width="match_parent"
-    android:background="@color/main"
-    android:scrollbars = "vertical"
-    android:scrollbarStyle="insideInset"
-    android:fillViewport="true">
-<LinearLayout
+    android:layout_height="match_parent" >
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <LinearLayout
+    <ScrollView
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       >
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Title Input -->
-        <EditText
-            android:id="@+id/title"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterTitle"
-            android:singleLine="true" />
-    </LinearLayout>
+        android:background="@color/main"
+        android:scrollbars = "vertical"
+        android:scrollbarStyle="insideInset"
+        android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/author"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Author Input -->
-        <EditText
-            android:id="@+id/author"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterAuthor"
-            android:singleLine="true"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:isScrollContainer="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               >
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- Title Input -->
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterTitle"
+                    android:singleLine="true" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/editor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Author Input -->
-        <EditText
-            android:id="@+id/editor"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterEditor"
-            android:singleLine="true"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- Author Input -->
+                <EditText
+                    android:id="@+id/author"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterAuthor"
+                    android:singleLine="true"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/serie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Author Input -->
-        <EditText
-            android:id="@+id/serie"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterSerie"
-            android:singleLine="true"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/editor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- Author Input -->
+                <EditText
+                    android:id="@+id/editor"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterEditor"
+                    android:singleLine="true"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/numSerie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Author Input -->
-        <EditText
-            android:id="@+id/numSerie"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterNumSerie"
-            android:singleLine="true"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/serie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- Author Input -->
+                <EditText
+                    android:id="@+id/serie"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterSerie"
+                    android:singleLine="true"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- Author Input -->
-        <EditText
-            android:id="@+id/year"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterYear"
-            android:singleLine="true"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/numSerie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- Author Input -->
+                <EditText
+                    android:id="@+id/numSerie"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterNumSerie"
+                    android:singleLine="true"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="20dp"
-            android:text="@string/isbn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            />
-        <!-- ISBN Input -->
-        <EditText
-            android:id="@+id/isbn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterIsbn"
-            android:singleLine="true"
-            android:layout_marginRight="20dp"/>
-        <Button
-            android:text="@string/rechercher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="chercherLivre"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- Author Input -->
+                <EditText
+                    android:id="@+id/year"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterYear"
+                    android:singleLine="true"/>
+            </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_marginBottom="20dp"
-            android:textSize="20dp"
-            android:text="@string/summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/details"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enterDetails"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:text="@string/isbn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <!-- ISBN Input -->
+                <EditText
+                    android:id="@+id/isbn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterIsbn"
+                    android:singleLine="true"
+                    android:layout_marginRight="20dp"/>
+                <Button
+                    android:text="@string/rechercher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="chercherLivre"
+                    />
 
-        <TextView
-            android:text="@string/image"
-            android:textSize="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginBottom="20dp"
+                    android:textSize="20dp"
+                    android:text="@string/summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/details"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enterDetails"
+                    android:maxLines="4"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            />
+                <TextView
+                    android:text="@string/image"
+                    android:textSize="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        <Button
-            android:text="@string/chercher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="chercherImage"
-            />
+                    />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150px"
-            android:layout_height="100px"
+                <Button
+                    android:text="@string/chercher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="chercherImage"
+                    />
 
-            />
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="150px"
+                    android:layout_height="100px"
 
-    <Button
-        android:text="@string/creer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="createBooks"
-        android:layout_gravity="center_horizontal"
-        />
+                    />
+            </LinearLayout>
+
+            <Button
+                android:text="@string/creer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="createBooks"
+                android:layout_gravity="center_horizontal"
+                />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
-</ScrollView>

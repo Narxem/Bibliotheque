@@ -40,7 +40,7 @@ public class ScanBook extends Activity {
 
     private static final int SCAN_BOOK = 1;
     private BookDAO bookDAO = new BookDAO(this);
-    private static final String OURKEY ="Avada Kedavra";
+    private static final String OURKEY ="AIzaSyC288QGqDhvI56ljFezhgMZbgZ1xjP8QrI";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
