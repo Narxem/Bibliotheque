@@ -143,10 +143,17 @@
         <!-- ISBN Input -->
         <EditText
             android:id="@+id/isbn"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/enterIsbn"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:layout_marginRight="20dp"/>
+        <Button
+            android:text="@string/rechercher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="chercherLivre"
+            />
 
     </LinearLayout>
     <LinearLayout

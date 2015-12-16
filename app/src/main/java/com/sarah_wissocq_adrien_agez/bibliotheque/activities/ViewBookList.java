@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -29,7 +31,10 @@ public class ViewBookList extends FragmentActivity {
 
     private List<Book> bookList;
     private BookDAO bookDAO = new BookDAO(this);
-
+    private float mDownX;
+    private float mDownY;
+    private final float SCROLL_THRESHOLD = 10;
+    private boolean isOnClick;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +90,17 @@ public class ViewBookList extends FragmentActivity {
             case R.id.edit:
                 // edit stuff here
                 return true;
+            case R.id.detail:
+                if(!isFinishing()) {
+                    Book book = (Book) listView.getAdapter().getItem(info.position);
+                    this.closeContextMenu();
+                    Intent activity = new Intent(this, DetailsBook.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("myBook", book);
+                    activity.putExtra("livre", bundle);
+                    startActivity(activity);
+                }
+                return true;
             case R.id.delete:
                 /** Récupère le livre est le supprime de la librairie */
                 Book bookToDelete = (Book) listView.getAdapter().getItem(info.position);
@@ -102,8 +118,6 @@ public class ViewBookList extends FragmentActivity {
                 return super.onContextItemSelected(item);
         }
     }
-
-
 
     public void addFilter(View view){
         Intent intent = new Intent(this, FilterMenu.class);

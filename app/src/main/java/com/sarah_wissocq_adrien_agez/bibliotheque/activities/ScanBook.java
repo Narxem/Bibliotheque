@@ -33,13 +33,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-
+/**
+ * Classe permettant de scanner le code barre d'un, de récupérer ses informations puis de l'ajouter à la bibliothèque.
+ */
 public class ScanBook extends Activity {
 
-        private static final int SCAN_BOOK = 1;
+    private static final int SCAN_BOOK = 1;
     private BookDAO bookDAO = new BookDAO(this);
     private static final String OURKEY ="Avada Kedavra";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class ScanBook extends Activity {
         Intent intent = getIntent();
         setContentView(R.layout.activity_scan_book);
         if (savedInstanceState == null) {
+            // Lance l'application permettant de scanner un code barre.
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
         }
@@ -60,6 +62,7 @@ public class ScanBook extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //Fermer la base de données.
         bookDAO.close();
     }
 
@@ -68,7 +71,6 @@ public class ScanBook extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-
         if (scanningResult != null) {
             String scanContent = scanningResult.getContents();
             String scanFormat = scanningResult.getFormatName();
@@ -81,7 +83,10 @@ public class ScanBook extends Activity {
         }
     }
 
-
+    /**
+     * Permet d'effectuer la requête google book
+     * @param url requête
+     */
     private void doGoogleBookRequest(String url) {
         final Book book = new Book();
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -90,6 +95,7 @@ public class ScanBook extends Activity {
             public void onResponse(String reponse) {
                 System.out.println("OnResponse");
                 parseJsonResult(reponse, book);
+                //Remplissage des champs
                 EditText editTitle= (EditText) findViewById(R.id.title);
                 editTitle.setText(book.getTitle(), TextView.BufferType.EDITABLE);
                 EditText editAuthor= (EditText) findViewById(R.id.author);
@@ -112,7 +118,11 @@ public class ScanBook extends Activity {
 
     }
 
-
+    /**
+     * Parse le Json afin de récupérer les informations nécessaire à la création du livre
+     * @param reponse
+     * @param book livre à modifier
+     */
     public void parseJsonResult(String reponse, Book book) {
         if (reponse != null) {
             try {
@@ -151,6 +161,7 @@ public class ScanBook extends Activity {
     /**public void prendrePhoto(View view){
      }
      */
+
     /**
      * Créer le livre lorqu'on appuie sur le bouton.
      */

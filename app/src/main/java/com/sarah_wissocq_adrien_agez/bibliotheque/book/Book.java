@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sarah_wissocq_adrien_agez.bibliotheque.book.database.BookDatabaseHelper.TABLE_BOOKS;
 
 /**
  * Created by wissocq on 24/09/15.
@@ -31,30 +30,30 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    public Book(String title, String series, int numSeries, String editor, int year, String isbn, String coverURI, String summary, List<String> authors){
-        this.title=title;
-        this.series=series;
-        this.numSeries=numSeries;
-        this.editor=editor;
-        this.year=year;
-        this.isbn=isbn;
-        this.coverURI=coverURI;
-        this.summary=summary;
-        this.authors=authors;
-        this.tags=new ArrayList<String>();
+    public Book(String title, String series, int numSeries, String editor, int year, String isbn, String coverURI, String summary, List<String> authors) {
+        this.title = title;
+        this.series = series;
+        this.numSeries = numSeries;
+        this.editor = editor;
+        this.year = year;
+        this.isbn = isbn;
+        this.coverURI = coverURI;
+        this.summary = summary;
+        this.authors = authors;
+        this.tags = new ArrayList<String>();
     }
 
     public Book(String title, List<String> authors) {
         this(title);
         this.authors = authors;
-        this.series="";
-        this.numSeries=-1;
-        this.editor="";
-        this.year=-1;
-        this.isbn="";
-        this.coverURI="";
-        this.summary="";
-        this.tags=new ArrayList<String>();
+        this.series = "";
+        this.numSeries = -1;
+        this.editor = "";
+        this.year = -1;
+        this.isbn = "";
+        this.coverURI = "";
+        this.summary = "";
+        this.tags = new ArrayList<String>();
     }
 
     public Book(String title, List<String> authors, String isbn) {
@@ -86,7 +85,7 @@ public class Book implements Serializable {
         this.authors = authors;
     }
 
-    public void setAuthors(String ... authors) {
+    public void setAuthors(String... authors) {
         this.authors = new ArrayList<String>();
         for (String author : authors) {
             this.authors.add(author);
@@ -157,10 +156,11 @@ public class Book implements Serializable {
         this.tags = tags;
     }
 
-    public void setTags(String ... tags) {
+    public void setTags(String... tags) {
         this.tags = new ArrayList<String>();
         for (String tag : tags) {
             this.tags.add(tag);
         }
     }
+
 }

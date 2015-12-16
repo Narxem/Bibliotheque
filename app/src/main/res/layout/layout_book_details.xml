@@ -8,7 +8,12 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         />
-
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/title" />
     <TextView
         android:id="@+id/author"
         android:layout_width="match_parent"
@@ -16,11 +21,30 @@
         android:layout_marginLeft="10dp"
         android:text="@string/author" />
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/editor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:text="@string/title" />
+        android:text="@string/editor" />
+    <TextView
+        android:id="@+id/serie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/serie" />
+    <TextView
+        android:id="@+id/numSerie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/numSerie" />
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/year" />
+
     <TextView
         android:id="@+id/isbn"
         android:layout_width="match_parent"
@@ -33,6 +57,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="@string/details" />
-
 
 </LinearLayout>

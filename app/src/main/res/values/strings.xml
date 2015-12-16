@@ -5,12 +5,14 @@
 
     <!-- Main activity -->
     <string name="createBook">Créer un livre</string>
+    <string name="detailsBook">Voir les détails</string>
     <string name="viewBookList">Voir la liste des livres</string>
     <string name="scanBook">Scanner un livre</string>
 
 
     <string name="creer">Créer</string>
     <string name="chercher">Parcourir</string>
+    <string name="rechercher">Chercher</string>
 
     <!-- Book properties -->
     <string name="title">Titre</string>
@@ -38,6 +40,7 @@
     <string name="confirm_creation">Le livre a été créé</string>
     <string name="creation_book">Création du livre</string>
     <string name="menu_edit">Modifier</string>
+    <string name="voirDetails">Voir les détails</string>
     <string name="suppress">Supprimer</string>
     <string name="BookSuppressed">Livre supprimé</string>
     <string name="title_activity_filter_menu">FilterMenu</string>

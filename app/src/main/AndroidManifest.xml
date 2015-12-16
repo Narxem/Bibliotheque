@@ -21,6 +21,10 @@
             android:label="@string/createBook" >
         </activity>
         <activity
+            android:name=".activities.DetailsBook"
+            android:label="@string/detailsBook" >
+        </activity>
+        <activity
             android:name=".activities.ViewBookList"
             android:label="@string/title_activity_view_book" >
         </activity>
