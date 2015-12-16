@@ -44,7 +44,7 @@ public class CreateBook extends Activity {
     private Uri uri;
     private BitmapDrawable bm=new BitmapDrawable();
     private BookDAO bookDAO = new BookDAO(this);
-    private static final String OURKEY ="AIzaSyC288QGqDhvI56ljFezhgMZbgZ1xjP8QrI";
+    private static final String OURKEY ="Impero";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -233,18 +233,25 @@ public class CreateBook extends Activity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
        // String image =imageView.getDrawable().toString();
        // String image = uri.toString();
-       // String image=this.uri.getPath();
+        String image=null; //this.uri.getPath();
+        if (editTitle.length() > 0) {
+            /** Ajoute le livre à la bibliothèque */
 
-        /** Ajoute le livre à la bibliothèque */
+            bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, image, detail, authors));
 
-        bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, "", detail, authors));
-
-        /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
-        AlertDialog.Builder alert=new AlertDialog.Builder(this);
-        alert.setTitle(R.string.creation_book);
-        alert.setMessage(R.string.confirm_creation);
-        alert.setPositiveButton(R.string.ok, new OkListener());
-        alert.show();
+            /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(R.string.creation_book);
+            alert.setMessage(R.string.confirm_creation);
+            alert.setPositiveButton(R.string.ok, new OkListener());
+            alert.show();
+        } else {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(R.string.no_title);
+            alert.setMessage(R.string.enter_title);
+            alert.setPositiveButton(R.string.ok, new OkListener());
+            alert.show();
+        }
     }
 
 

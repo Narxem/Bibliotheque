@@ -17,7 +17,7 @@
         android:text="@string/createBook"
         android:onClick="create"
         android:textSize="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_weight="1"
         android:layout_above="@id/createBook"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="50dp"
         android:textSize="32dp"
         android:textColor="@color/Black"
         android:textStyle="bold"
@@ -46,7 +46,7 @@
         android:onClick="scanner"
         android:layout_below="@+id/createBook"
         android:textSize="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         />
 
     <Button

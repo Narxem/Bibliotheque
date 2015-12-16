@@ -40,7 +40,7 @@ public class ScanBook extends Activity {
 
     private static final int SCAN_BOOK = 1;
     private BookDAO bookDAO = new BookDAO(this);
-    private static final String OURKEY ="AIzaSyC288QGqDhvI56ljFezhgMZbgZ1xjP8QrI";
+    private static final String OURKEY ="Avada Kedavra";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -176,6 +176,8 @@ public class ScanBook extends Activity {
         EditText editTitle= (EditText) findViewById(R.id.title);
         String title = editTitle.getText().toString();
 
+
+
         /** Récupère l'éditeur */
         EditText editEditor= (EditText) findViewById(R.id.editor);
         String editor = editEditor.getText().toString();
@@ -216,16 +218,24 @@ public class ScanBook extends Activity {
 
         /**String image=this.uri.getPath();*/
 
-        /** Ajoute le livre à la bibliothèque */
+        if (title != null && title != "") {
+            /** Ajoute le livre à la bibliothèque */
 
-        bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, image, detail, authors));
+            bookDAO.insert(new Book(title, serie, numSerie, editor, year, isbn, image, detail, authors));
 
-        /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
-        AlertDialog.Builder alert=new AlertDialog.Builder(this);
-        alert.setTitle(R.string.creation_book);
-        alert.setMessage(R.string.confirm_creation);
-        alert.setPositiveButton(R.string.ok, new OkListener());
-        alert.show();
+            /** Affiche une boîte de dialogue pour confirmer que le livre a été créé */
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(R.string.creation_book);
+            alert.setMessage(R.string.confirm_creation);
+            alert.setPositiveButton(R.string.ok, new OkListener());
+            alert.show();
+        } else {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(R.string.no_title);
+            alert.setMessage(R.string.enter_title);
+            alert.setPositiveButton(R.string.ok, new OkListener());
+            alert.show();
+        }
     }
 
 
