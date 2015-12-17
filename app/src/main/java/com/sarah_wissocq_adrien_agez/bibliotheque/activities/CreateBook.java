@@ -44,7 +44,7 @@ public class CreateBook extends Activity {
     private Uri uri;
     private BitmapDrawable bm=new BitmapDrawable();
     private BookDAO bookDAO = new BookDAO(this);
-    private static final String OURKEY ="Impero";
+    private static final String OURKEY ="AIzaSyC288QGqDhvI56ljFezhgMZbgZ1xjP8QrI";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

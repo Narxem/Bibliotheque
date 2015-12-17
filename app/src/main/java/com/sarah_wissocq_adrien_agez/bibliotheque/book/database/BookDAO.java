@@ -65,7 +65,7 @@ public class BookDAO {
         ContentValues authorValues = new ContentValues();
         for (String author : authors) {
             authorValues.clear();
-            Cursor cursor = database.query(TABLE_AUTHORS, null, AUTHOR_NAME + " = '" + author + "'", null, null, null, null, "1");
+            Cursor cursor = database.query(TABLE_AUTHORS, null, AUTHOR_NAME + " = '" + author.replaceAll("'", "''") + "'", null, null, null, null, "1");
             if (cursor.getCount() == 0) {  // Auteur pas encore présent
                 authorValues.put(AUTHOR_NAME, author);
                 long authorId = database.insert(TABLE_AUTHORS, null, authorValues);
